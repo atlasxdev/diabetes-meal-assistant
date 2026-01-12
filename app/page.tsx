@@ -1,7 +1,7 @@
 import { BackgroundPattern } from "@/components/background-pattern";
 import { ModeToggle } from "@/components/mode-toggle";
 import SelectDiabetesType from "@/components/select-diabetes-type";
-import { HeartPulse } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -11,9 +11,15 @@ export default function Home() {
           className="flex items-center justify-center max-w-7xl         
     mx-auto">
           <div className="flex items-center gap-3">
-            <HeartPulse className="h-8 w-8 text-emerald-500" />
+            <Image
+              className="object-cover"
+              width={100}
+              height={100}
+              src={"/diabetes-meal-assistant.png"}
+              alt="Website Logo"
+            />
             <h1
-              className="text-2xl font-bold                
+              className="hidden md:block text-2xl font-bold                
     tracking-tight">
               Diabetes Meal Assistant
             </h1>
