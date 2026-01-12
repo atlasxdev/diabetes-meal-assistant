@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Diabetes Meal Assistant",
   description: "AI-powered meal feedback to help you manage your diabetes.",
   icons: {
-    icon: "/diabetes-meal-assistant-logo.svg",
+    icon: "/diabetes-meal-assistant.svg",
   },
 };
 
