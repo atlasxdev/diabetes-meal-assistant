@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Diabetes Meal Assistant
 
-## Getting Started
+## Project Purpose
 
-First, run the development server:
+The **Diabetes Meal Assistant** is an AI-powered web application designed to help individuals managing Type 2 Diabetes make safer, balanced, and practical food choices. It provides instant, personalized feedback on meals, guiding users towards healthier eating habits without replacing professional medical advice.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   **AI-Powered Meal Feedback**: Leveraging the Google Gemini AI, the assistant analyzes user-submitted meal descriptions and provides constructive feedback.
+-   **Portion Guidance & Food Swaps**: Offers practical advice on portion control and suggests healthier alternatives or swaps for various food items.
+-   **Nutrition Education**: Explains the impact of food choices on blood sugar levels, carbohydrate impact, and meal timing in simple, non-medical language.
+-   **Conversation-like Interface**: Users can interact with the assistant through a chat-like interface, making the experience intuitive and engaging.
+-   **Cultural Awareness**: Where possible, suggestions and feedback are adapted to common Filipino and international food preferences.
+-   **Feedback Caching**: To prevent redundant AI calls and improve performance, feedback for previously analyzed meals is cached in a Supabase database.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technology Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+-   **Frontend**: Next.js (TypeScript)
+-   **Styling**: Tailwind CSS, shadcn/ui
+-   **AI Integration**: Google Gemini JavaScript SDK
+-   **Form Validation**: Zod
+-   **Database/Caching**: Supabase (for storing and retrieving AI feedback)
+-   **UI Notifications**: Sonner (toast notifications)
 
-## Learn More
+## Disclaimer
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**This tool provides general guidance only and is not a substitute for professional medical advice. Please consult your doctor or a registered dietitian for personalized care and medical advice.**
