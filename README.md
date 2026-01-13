@@ -1,35 +1,34 @@
 # 🥗 Diabetes Meal Assistant
 
-> An AI-powered web app that helps people managing **Diabetes Types** make safer, balanced, and practical food choices — instantly.
+> An AI-powered web app that helps individuals managing **all types of diabetes (Type 1, Type 2, and Gestational)** make safer, balanced, and practical food choices — instantly.
 
 ---
 
 ## 🎯 Project Purpose
 
-The **Diabetes Meal Assistant** is designed to provide **personalized meal feedback** using AI.  
-It guides users toward healthier eating habits while keeping advice simple, friendly, and culturally relevant — **without replacing professional medical guidance**.
+The **Diabetes Meal Assistant** is an AI-powered web application designed to help individuals managing **Type 1, Type 2, and Gestational Diabetes** make safer, balanced, and practical food choices. It provides instant, personalized feedback on meals, guiding users toward healthier eating habits without replacing professional medical advice.
 
 ---
 
 ## ✨ Key Features
 
 - 🤖 **AI-Powered Meal Feedback**  
-  Uses **Google Gemini AI** to analyze meal descriptions and generate constructive suggestions.
+  Uses **Google Gemini AI** to analyze user-submitted meal descriptions and generate constructive suggestions based on the selected diabetes type.
 
 - 🍽️ **Portion Guidance & Food Swaps**  
-  Recommends portion control tips and healthier food alternatives.
+  Offers practical advice on portion control and suggests healthier food alternatives.
 
 - 📚 **Nutrition Education**  
-  Explains how meals affect blood sugar in simple, non-medical language.
+  Explains how food choices affect blood sugar in simple, non-medical language.
 
 - 💬 **Chat-like Experience**  
-  Interactive conversation-style interface for easy use.
+  Users interact with the assistant through a conversational interface.
 
-- 🇵🇭 **Cultural Awareness**  
-  Adapts suggestions for Filipino and international meals.
+- 🌏 **Cultural Awareness**  
+  Suggestions are adapted to common Filipino and international meals.
 
 - ⚡ **Feedback Caching**  
-  Stores analyzed meals in **Supabase** to reduce repeated AI calls.
+  Previously analyzed meals are cached in **Supabase** to reduce repeated AI calls and improve performance.
 
 ---
 
@@ -49,16 +48,7 @@ It guides users toward healthier eating habits while keeping advice simple, frie
 ## ⚠️ Disclaimer
 
 > **This tool provides general guidance only and is not a substitute for professional medical advice.**  
-> Always consult a **doctor or registered dietitian** for personalized care.
-
----
-
-## 🚀 Future Enhancements
-
-- 📊 Meal history dashboard  
-- 📈 Blood sugar tracking integration  
-- 🥘 Filipino meal database suggestions  
-- 🔎 Smart search for common meals  
+> Always consult a **doctor or registered dietitian** for personalized care and medical advice.
 
 ---
 
