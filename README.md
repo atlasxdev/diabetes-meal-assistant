@@ -50,6 +50,3 @@ The **Diabetes Meal Assistant** is an AI-powered web application designed to hel
 > **This tool provides general guidance only and is not a substitute for professional medical advice.**  
 > Always consult a **doctor or registered dietitian** for personalized care and medical advice.
 
----
-
-Made with ❤️ using Next.js + Gemini AI
