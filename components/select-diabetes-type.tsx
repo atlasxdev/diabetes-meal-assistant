@@ -4,9 +4,10 @@ import { getFeedback } from "@/action";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Lightbulb, LoaderCircle, Sparkles } from "lucide-react";
+import { CircleAlertIcon, Lightbulb, LoaderCircle, Sparkles } from "lucide-react";
 import { useActionState, useEffect, useState } from "react";
 import { toast } from "sonner";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 const diabetesTypeMap: { [key: string]: string } = {
   "type-1": "Type 1 Diabetes",
@@ -34,16 +35,31 @@ function SelectDiabetesType() {
 
     if (state.success) {
       toast.success("Feedback generated successfully!");
+      setDiabetesType("type-1");
     }
   }, [state]);
 
   return (
-    <div className="z-20 w-full max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 z-20 w-full max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
       <form action={formAction} className="p-8 shadow-md border backdrop-blur-3xl">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold sm:text-4xl">Your Personal Diabetes Meal Assistant</h1>
-          <p className="mt-4 text-lg">
-            Get instant, AI-powered feedback on your food choices.
+        <div className="mb-8">
+          <div className="relative flex justify-center">
+            <h1 className="text-3xl font-black sm:text-4xl">Your Personal Diabetes Meal Assistant</h1>
+            <svg
+              width="453"
+              height="8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-primary absolute -bottom-2 w-max mx-auto max-sm:hidden lg:scale-x-130">
+              <path
+                d="M2 6.75068C53.4722 -1.10509 368.533 2.14284 451.5 6.75085"
+                strokeWidth="3"
+                strokeLinecap="round"></path>
+            </svg>
+          </div>
+
+          <p className="mt-4 text-center text-lg">
+            Get instant, <span className="text-primary font-bold">AI-powered</span> feedback on your food choices.
             <br />
             Select your diabetes type and enter a food to begin.
           </p>
@@ -88,32 +104,49 @@ function SelectDiabetesType() {
           </Button>
         </div>
 
-        <div className="mt-8 p-6 rounded-lg border-l-4 border-emerald-400 bg-emerald-50">
-          <div className="flex">
-            <div className="shrink-0">
-              <Lightbulb className="h-6 w-6 text-emerald-600" aria-hidden="true" />
-            </div>
-            <div className="ml-4">
-              <h2 className="text-xl font-black text-emerald-800">Personalized Feedback</h2>
+        <div className="mt-8 px-0 md:p-6">
+          <div className="ml-4">
+            <div className="flex space-x-4">
+              <Lightbulb className="h-6 w-6 text-accent" aria-hidden="true" />
 
-              <div className="prose mt-2 text-base text-emerald-700">
-                {state.feedback ? (
+              <h2 className="text-xl font-black text-accent">Personalized Feedback</h2>
+            </div>
+            <div className="prose mt-4 text-base text-accent">
+              {state.feedback ? (
+                <>
                   <div
                     className="animate-in fade-in slide-in-from-bottom-4 duration-500"
                     dangerouslySetInnerHTML={{ __html: state.feedback }}></div>
-                ) : (
-                  <p>
-                    [Feedback for <span className="font-semibold">{diabetesTypeMap[diabetesType]}</span> will appear
-                    here. For example, how this food might impact your blood sugar and suggestions for healthier
-                    alternatives.]
-                  </p>
-                )}
-              </div>
+                  <ImportantReminder />
+                </>
+              ) : (
+                <p>
+                  [Feedback for <span className="font-semibold">{diabetesTypeMap[diabetesType]}</span> will appear here.
+                  For example, how this food might impact your blood sugar and suggestions for healthier alternatives.]
+                </p>
+              )}
             </div>
           </div>
         </div>
       </form>
     </div>
+  );
+}
+
+function ImportantReminder() {
+  return (
+    <Alert className="bg-primary text-primary-foreground flex justify-between border-none">
+      <CircleAlertIcon />
+      <div className="flex flex-1 flex-col gap-4">
+        <div className="flex-1 flex-col justify-center gap-1">
+          <AlertTitle>Important Reminder</AlertTitle>
+          <AlertDescription className="text-primary-foreground/80">
+            This is general information only and not a substitute for medical advice. Please consult your doctor or
+            dietitian for personal guidance.
+          </AlertDescription>
+        </div>
+      </div>
+    </Alert>
   );
 }
 

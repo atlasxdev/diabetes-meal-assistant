@@ -19,7 +19,7 @@ export default function Home() {
               alt="Website Logo"
             />
             <h1
-              className="hidden md:block text-2xl font-bold                
+              className=" hidden md:block text-2xl font-black                
     tracking-tight">
               Diabetes Meal Assistant
             </h1>
@@ -38,8 +38,8 @@ export default function Home() {
       <footer className="py-6 px-4 sm:px-6 lg:px-8 backdrop-blur-3xl border-t">
         <div className="max-w-7xl mx-auto">
           <p className="text-center text-sm text-destructive">
-            <strong>Disclaimer:</strong> This tool provides general guidance and is not a substitute for professional
-            medical advice.
+            <span className="font-black">Disclaimer:</span> This tool provides general guidance and is not a substitute
+            for professional medical advice.
             <br />
             Always consult with your doctor or a registered dietitian. Always consult with your doctor or a registered
             dietitian for personalized care.
