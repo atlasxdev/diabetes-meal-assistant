@@ -1,6 +1,6 @@
 # 🥗 Diabetes Meal Assistant
 
-> An AI-powered web app that helps people managing **Type 2 Diabetes** make safer, balanced, and practical food choices — instantly.
+> An AI-powered web app that helps people managing **Diabetes Types** make safer, balanced, and practical food choices — instantly.
 
 ---
 
