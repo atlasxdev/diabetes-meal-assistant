@@ -117,6 +117,13 @@ function SelectDiabetesType() {
                   <div
                     className="animate-in fade-in slide-in-from-bottom-4 duration-500"
                     dangerouslySetInnerHTML={{ __html: state.feedback }}></div>
+                  <hr
+                    style={{
+                      margin: "28px 0",
+                      border: "none",
+                      borderBottom: "2px solid #006045",
+                    }}
+                  />
                   <ImportantReminder />
                 </>
               ) : (
