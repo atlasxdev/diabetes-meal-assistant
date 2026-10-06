@@ -67,7 +67,7 @@ export async function getFeedback(initialState: ActionState, formData: FormData)
       input: prompt,
     });
 
-    const aiText = result.text ?? "No response generated.";
+    const aiText = result.output_text ?? "No response generated.";
 
     const formatted = formatMealResponseToHTML({
       content: aiText,
