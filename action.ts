@@ -68,7 +68,7 @@ export async function getFeedback(initialState: ActionState, formData: FormData)
     });
 
     const aiText =
-      interaction.output
+      interaction.outputs
         ?.filter((item) => item.type === "text")
         .map((item) => item.text)
         .join("") ?? "No response generated.";
