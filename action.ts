@@ -23,6 +23,25 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
+const MODELS = ["gemini-3.8-flash", "gemini-3.5-flash", "gemini-3.1-flash-lite"];
+
+async function generate(prompt: string) {
+  let lastError: unknown;
+  for (const model of MODELS) {
+    try {
+      const result = await ai.models.generateContent({ model, contents: prompt });
+      const text = result.text?.trim();
+      if (text) return text;
+      lastError = new Error(`${model} returned no text`);
+    } catch (error) {
+      lastError = error;
+      const status = (error as { status?: number }).status;
+      if (status !== 503 && status !== 429) throw error; // a real failure: don't mask it
+    }
+  }
+  throw lastError;
+}
+
 export async function getFeedback(initialState: ActionState, formData: FormData): Promise<ActionState> {
   const rawFormData = {
     diabetes_type: formData.get("diabetes_type"),
@@ -62,22 +81,13 @@ export async function getFeedback(initialState: ActionState, formData: FormData)
       };
     }
 
-   const result = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
-      contents: prompt,
-    });
-
-    const aiText = result.text?.trim();
-
-    if (!aiText) {
-      throw new Error("Gemini returned no text");
-    }
+   const aiText = await generate(prompt);
   
-     const formatted = formatMealResponseToHTML({
-        content: aiText,
-        meal,
-        type: diabetesType,
-      });
+   const formatted = formatMealResponseToHTML({
+      content: aiText,
+      meal,
+      type: diabetesType,
+    });
 
     const { error } = await supabase
         .from("meal-assistant-response")
