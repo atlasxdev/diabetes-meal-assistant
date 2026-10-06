@@ -67,8 +67,12 @@ export async function getFeedback(initialState: ActionState, formData: FormData)
       input: prompt,
     });
 
-    const aiText = interaction.output_text ?? "No response generated.";
-
+    const aiText =
+      interaction.output
+        ?.filter((item) => item.type === "text")
+        .map((item) => item.text)
+        .join("") ?? "No response generated.";
+    
     const formatted = formatMealResponseToHTML({
       content: aiText,
       meal,
@@ -82,8 +86,6 @@ export async function getFeedback(initialState: ActionState, formData: FormData)
     if (error) {
       throw new Error(error.message);
     }
-
-    console.log(result.text);
 
     return {
       success: true,
