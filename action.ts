@@ -62,37 +62,38 @@ export async function getFeedback(initialState: ActionState, formData: FormData)
       };
     }
 
-   const interaction = await ai.interactions.create({
+   const result = await ai.models.generateContent({
       model: "gemini-3.8-flash",
-      input: prompt,
+      contents: prompt,
     });
 
-    const aiText =
-      interaction.outputs
-        ?.filter((item) => item.type === "text")
-        .map((item) => item.text)
-        .join("") ?? "No response generated.";
-    
-    const formatted = formatMealResponseToHTML({
-      content: aiText,
-      meal,
-      type: diabetesType,
-    });
+    const aiText = result.text?.trim();
+
+    if (!aiText) {
+      throw new Error("Gemini returned no text");
+    }
+  
+     const formatted = formatMealResponseToHTML({
+        content: aiText,
+        meal,
+        type: diabetesType,
+      });
 
     const { error } = await supabase
-      .from("meal-assistant-response")
-      .insert({ meal, diabetes_type: diabetesType, feedback: formatted });
+        .from("meal-assistant-response")
+        .insert({ meal, diabetes_type: diabetesType, feedback: formatted });
 
     if (error) {
-      throw new Error(error.message);
+      console.error("Couldn't cache meal feedback:", error.message);
     }
 
     return {
       success: true,
       feedback: formatted,
-      meal: meal,
-      diabetesType: diabetesType,
+      meal,
+      diabetesType,
     };
+    
   } catch (error) {
     console.error("Error calling Gemini API:", error);
     return {
