@@ -62,9 +62,9 @@ export async function getFeedback(initialState: ActionState, formData: FormData)
       };
     }
 
-    const result = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: prompt,
+    const result = await ai.interactions.create({
+      model: "gemini-3.8-flash",
+      input: prompt,
     });
 
     const aiText = result.text ?? "No response generated.";
